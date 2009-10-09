@@ -11,3 +11,7 @@ textorize-server requires textorize to be installed. Once it's installed, clone 
 Try it out on a webpage like so:
 
     <img src="/textorize/img.php?f=arial&s=20&c=000000&g=ffffff&m=just_a_test" alt="just_a_test">
+
+It should come out looking like this:
+
+![textorize-server test image](http://vastermonster.com/images/textorize-server-test.png "textorize-server test image")
