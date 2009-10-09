@@ -1,6 +1,15 @@
 <?php
 
 /*
+  @project textorize-server
+  @author Paul Thrasher
+  @uses textorize by Thomas Fuchs (http://textorize.org/)
+*/
+
+/*
+textorize command-line options
+==============================
+
 textorize [options] string
   -f, --font=[FONT]                Font name
   -s, --size=[SIZE]                Font size in point
@@ -31,12 +40,11 @@ $msg = $input['m'];
 $msg = escapeshellarg($msg);
 
 $path = realpath(dirname(__FILE__));
-$filename = $path."/cache/".sha1($options.$msg).".png";
-
-$options .= "--output={$filename} ";
+$filename = $path."/cache/cache-".sha1($options.$msg).".png";
 
 if(!file_exists($filename)){
-  //echo $cmd.$options.$msg;
+  $options .= "--output={$filename} ";
+  //echo $cmd.$options.$msg; // you can debug what's run in the command line here.
   //exit;
   exec($cmd.$options.$msg);
 }
@@ -61,9 +69,7 @@ function array2cmd($array){
     }else  if(is_float($v)){
       $v2 = $v;
     }elseif(is_string($v)){
-      //$v = str_replace(' ', '\ ', $v);
       $v = escapeshellarg($v);
-      //$v2 = "'$v'";
       $v2 = $v;
     }else{
       continue;
