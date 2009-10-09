@@ -42,6 +42,6 @@ textorize (I belive) only works on OS X because it uses MacRuby for it's image g
 ## License & Credit
 
 MIT License
-Copyright (c) 2009 Paul Thrasher
+Copyright (c) 2009 Paul Thrasher ([http://vastermonster.com](http://vastermonster.com))
 
-textorize by Thomas Fuchs (http://textorize.org/)
+textorize by Thomas Fuchs ([http://textorize.org/](http://textorize.org/))
