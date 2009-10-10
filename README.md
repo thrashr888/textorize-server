@@ -1,11 +1,20 @@
 
 ## Installation
 
-textorize-server requires textorize to be installed. Once it's installed, clone these files straight into your webroot.
+textorize-server requires textorize to be installed. Once it's installed, clone these files straight into your web root.
+
+Install textorize from Gemcutter:
+
+    $ gem install textorize
+
+Or install textorize from Github:
 
     $> gem sources -a http://gems.github.com
     $> sudo gem install madrobby-textorize
-    $> cd <your project's webroot>
+
+Then clone textorize into your web root and setup the cache folder:
+
+    $> cd <your project's web root>
     $> git clone git://github.com/thrashr888/textorize-server.git textorize-server
     $> chmod 777 textorize/cache
 
