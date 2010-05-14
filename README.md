@@ -21,7 +21,7 @@ Try it out on a webpage like so:
 
 Or in your browser here:
 
-[http://localhost/textorize/test.html](http://localhost/textorize/test.html)
+[http://localhost/textorize-server/test.html](http://localhost/textorize/test.html)
 
 And it should come out looking like this:
 
@@ -29,11 +29,11 @@ And it should come out looking like this:
 
 So far, textorize-server supports these options:
 
-*  f = font (whatever is installed on your server)
-*  s = size
-*  c = color
-*  g = background
-*  m = message
+*  f = font family (whatever is installed on your server)
+*  s = font size
+*  c = text color
+*  g = background color
+*  m = text message (don't forget to url encode!)
 
 ## How it works
 
