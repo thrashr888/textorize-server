@@ -9,9 +9,9 @@ Install textorize from Gemcutter:
 
 Then clone textorize into your web root and setup the cache folder:
 
-    $> cd <your project's web root>
-    $> git clone git://github.com/thrashr888/textorize-server.git textorize-server
-    $> chmod 777 textorize/cache
+    $ cd <your project's web root>
+    $ git clone git://github.com/thrashr888/textorize-server.git textorize-server
+    $ chmod 777 textorize/cache
 
 ## Usage
 
