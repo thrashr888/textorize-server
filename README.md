@@ -5,12 +5,7 @@ textorize-server requires textorize to be installed. Once it's installed, clone 
 
 Install textorize from Gemcutter:
 
-    $ gem install textorize
-
-Or install textorize from Github:
-
-    $> gem sources -a http://gems.github.com
-    $> sudo gem install madrobby-textorize
+    $ gem install textorize --source http://gemcutter.org
 
 Then clone textorize into your web root and setup the cache folder:
 

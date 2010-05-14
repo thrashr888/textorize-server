@@ -1,9 +1,9 @@
 <?php
 
-/*
-  @project textorize-server
-  @author Paul Thrasher
-  @uses textorize by Thomas Fuchs (http://textorize.org/)
+/**
+ * textorize-server [http://github.com/thrashr888/textorize-server]
+ * @author Paul Thrasher [http://vastermonster.com]
+ * @uses textorize by Thomas Fuchs [http://textorize.org/]
 */
 
 /*
@@ -24,30 +24,17 @@ textorize [options] string
   -a, --smoothing=[VALUE]          Font smoothing: 0=no subpixel AA, 1=light, 2=normal, 3=strong
 */
 
-$input = urldecode_deep($_GET);
+include 'textorize.class.php';
 
-$cmd = "/usr/bin/textorize ";
-
-$options_list = array(
-    'font' => $input['f'] ? (string) $input['f'] : 'arial',
-    'size' => $input['s'] ? (float) $input['s'] : 15,
-    'color' => "#".($input['c'] ? (string) $input['c'] : '000000'),
-    'background' => "#".($input['g'] ? (string) $input['g'] : 'FFFFFF'),
-  );
-$options = array2cmd($options_list);
-
-$msg = $input['m'];
-$msg = escapeshellarg($msg);
+$input = $textorize::urldecode_deep($_GET);
 
 $path = realpath(dirname(__FILE__));
-$filename = $path."/cache/cache-".sha1($options.$msg).".png";
 
-if(!file_exists($filename)){
-  $options .= "--output={$filename} ";
-  //echo $cmd.$options.$msg; // you can debug what's run in the command line here.
-  //exit;
-  exec($cmd.$options.$msg);
-}
+$cmd = "/usr/bin/textorize";
+
+$textorize = new textorize($path, $cmd);
+
+$filename = $textorize->render($input);
 
 header('Content-type: image/png');
 
@@ -58,29 +45,3 @@ header("Cache-Control: maxage=".$expires);
 header('Expires: ' . gmdate('D, d M Y H:i:s', time()+$expires) . ' GMT');
 
 readfile($filename);
-
-function array2cmd($array){
-  $output = '';
-  foreach($array as $k=>$v){
-    if(is_int($v)){
-      $v2 = $v;
-    }else  if(is_numeric($v)){
-      $v2 = (int) $v;
-    }else  if(is_float($v)){
-      $v2 = $v;
-    }elseif(is_string($v)){
-      $v = escapeshellarg($v);
-      $v2 = $v;
-    }else{
-      continue;
-    }
-    $output .= "--$k=$v2 ";
-  }
-  return $output;
-}
-
-function urldecode_deep($val)
-{
-   return (is_array($val)) ?
-     array_map('urldecode_deep', $val) : urldecode($val);
-}
